@@ -1,65 +1,55 @@
+//Best Performance Do-While Loop
+//Second Performance For Loop Function
+//Worst Performance For Loop
 
+console.time('For Loop Without Function') //For Loop performance time start
 
-
-console.log('**********************************');
  
-let nums = [2, 7, 11, 15];
-let target = 9;
- 
-for (let i = 0; i < nums.length; i++) {
-  if (target === nums[i] + nums[i + 1]) {
-    console.log(nums.indexOf(nums[i]), nums.indexOf(nums[i + 1]));
+let nums = [2, 7, 11, 15];                  //definition of array elements
+let target = 9;                             //definition of target element
+for (let i = 0; i < nums.length; i++) {     //loop of array length
+  if (target === nums[i] + nums[i + 1]) {   //if array elements are equal to target
+    console.log(nums.indexOf(nums[i]), nums.indexOf(nums[i + 1]));  //Write the index number of the equal elements to the screen
   }
 }
+
+console.timeEnd('For Loop Without Function')  // For Loop performance time end
  
 console.log('*/*//*///*/*/*/*/*/*/*/*/*/*/*/*/');
+
+
+console.time('Do-While Loop Without Function')   //Do-While Loop Performance time start
+
  
-let start = 0;
+let start = 0;                                           //Definition of start index
 do {
-  if (target === nums[start] + nums[start + 1]) {
-    console.log(nums.indexOf(nums[start]), nums.indexOf(nums[start + 1]));
+  if (target === nums[start] + nums[start + 1]) {               //if array elements are equal to target
+    console.log(nums.indexOf(nums[start]), nums.indexOf(nums[start + 1]));  //Write the index number of the equal elements to the screen
   }
-  start++;
-} while (start < nums.length);
+  start++;                                          //incrase start index
+} while (start < nums.length);               //loop of array length
+
+
+console.timeEnd('Do-While Loop Without Function') //Do-While Loop Performance time end
  
-console.log('**********************************');
- 
-let nums2 = [3, 2, 4];
-let target2 = 6;
- 
-for (let i = 0; i < nums2.length; i++) {
-  if (target2 === nums2[i] + nums2[i + 1]) {
-    console.log(nums2.indexOf(nums2[i]), nums2.indexOf(nums2[i + 1]));
+
+console.log("*********************************")
+
+  
+console.time('For Loop Function')   //For Loop Function performance time start
+function targetSum(nums, target) {     //Creating a function and determining the value to be entered          
+  for (let i = 0; i <= nums.length; i++) {   //loop of array length
+    for (let j = i + 1; j <= nums.length; j++) {   //Second loop of array length
+      if (nums[i] + nums[j] == target) {    //if array elements are equal to target
+        
+        return `${[i,j]}`;             //Return the index number of equal elements
+      }
+    }
   }
+  return result;
 }
- 
-console.log('*/*//*///*/*/*/*/*/*/*/*/*/*/*/*/');
- 
-let start2 = 0;
-do {
-  if (target2 === nums2[start2] + nums2[start2 + 1]) {
-    console.log(nums2.indexOf(nums2[start2]), nums2.indexOf(nums2[start2 + 1]));
-  }
-  start2++;
-} while (start2 < nums2.length);
- 
-console.log('**********************************');
- 
-let nums3 = [3, 3];
-let target3 = 6;
- 
-for (let i = 0; i <= nums3.length; i++) {
-  if (target3 === nums3[i] + nums3[i + 1]) {
-    console.log(i, i+1);
-  }
-}
- 
-console.log('*/*//*///*/*/*/*/*/*/*/*/*/*/*/*/');
- 
-let start3 = 0;
-do {
-  if (target3 === (nums3[start3] + nums3[start3 + 1])) {
-    console.log(start3, start3+1);
-  }
-  start3++;
-} while (start3 < nums3.length);
+
+console.log(targetSum([2, 7, 11, 15], 9));  //Call "For Loop Function" for write to screen
+console.log(targetSum([3, 2, 4], 6));       //Call "For Loop Function" for write to screen
+console.log(targetSum([3, 3], 6));          //Call "For Loop Function" for write to screen
+console.timeEnd('For Loop Function')
